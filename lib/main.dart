@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import './Screen/splash.dart';
-import './Screen/LoginScreen.dart';
-import './Screen/latest_design_screen.dart';
-import './src/ui/home_screen.dart';
-import './Screen/Offer_generator.dart';
+
 
 
 
@@ -23,12 +20,7 @@ class MyApp extends StatelessWidget {
       
          home: SplashScreen(),
 
-         routes: {
-           LoginPage.routeName: (context)=>LoginPage(),
-           LatestDesignScreen.routeName: (context)=>LatestDesignScreen(),
-           HomeScreen.routeName: (context)=>HomeScreen(),
-           OfferG.routeName: (context)=>OfferG(),
-         },
+     
     );
   }
 }
