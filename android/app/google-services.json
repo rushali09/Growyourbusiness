@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "203700698969",
+    "firebase_url": "https://grow-your-business-10e66-default-rtdb.firebaseio.com",
+    "project_id": "grow-your-business-10e66",
+    "storage_bucket": "grow-your-business-10e66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203700698969:android:2559520c1e7fa955685648",
+        "android_client_info": {
+          "package_name": "com.example.business"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203700698969-nf8bj2kusncm2rptr5igttoahgfu44li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRb5d4MaE5uMiQev8qR5BY6Ws0_h575JU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203700698969-nf8bj2kusncm2rptr5igttoahgfu44li.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

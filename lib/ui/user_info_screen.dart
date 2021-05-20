@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class UserInfoScreen extends StatefulWidget {
   UserInfoScreen({Key key}) : super(key: key);
@@ -8,6 +9,23 @@ class UserInfoScreen extends StatefulWidget {
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
+  
+  TextEditingController businessnameController, businesscategoryController,addressController, yearlysalesController;
+
+DatabaseReference ref;
+
+@override
+  void initState() {
+   
+    super.initState();
+     businessnameController = TextEditingController();
+    businesscategoryController = TextEditingController();
+    addressController =  TextEditingController();
+    yearlysalesController = TextEditingController();
+   
+    ref = FirebaseDatabase.instance.reference().child('data');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +52,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     child: Theme(
                   data: ThemeData(
                     inputDecorationTheme: InputDecorationTheme(
+                      
                       labelStyle: TextStyle(color: Colors.white, fontSize: 20,fontStyle: FontStyle.italic),
                     ),
                   ),
@@ -46,7 +65,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                         child: Column(
                           children: [
                             TextFormField(
-                             
+                              style: TextStyle(color:Colors.white,fontSize: 20,fontStyle: FontStyle.italic),
+                             controller:   businessnameController,
                               decoration: InputDecoration(
                                 labelText: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBusiness Name",
 
@@ -60,7 +80,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                             ),
                             SizedBox(height:30),
                              TextFormField(
-                             
+                               style: TextStyle(color:Colors.white,fontSize: 20,fontStyle: FontStyle.italic),
+                             controller: businesscategoryController,
                               decoration: InputDecoration(
                                 labelText: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBusiness Category",
 
@@ -74,7 +95,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                             ),
                              SizedBox(height:30),
                              TextFormField(
-                             
+                               style: TextStyle(color:Colors.white,fontSize: 20,fontStyle: FontStyle.italic),
+                             controller: addressController,
                               decoration: InputDecoration(
                                 labelText: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAddress",
 
@@ -88,6 +110,8 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                             ),
                              SizedBox(height:30),
                              TextFormField(
+                               style: TextStyle(color:Colors.white,fontSize: 20,fontStyle: FontStyle.italic),
+                               controller: yearlysalesController,
                              keyboardType:TextInputType.number,
                               decoration: InputDecoration(
                                 labelText: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tYearly Sales",
@@ -107,7 +131,9 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                       ),
                           SizedBox(height: 50,),
                     ElevatedButton(
-                      onPressed: (){}, 
+                      onPressed: (){
+                         saveData();
+                      }, 
                       style: ElevatedButton.styleFrom(
                         shape: CircleBorder(),
                         primary: Colors.cyan[300],
@@ -125,4 +151,27 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
           )
         ]));
   }
+
+
+void saveData(){
+    String businessname = businessnameController.text;
+    String businesscategory = businesscategoryController.text;
+    String address  = addressController.text;
+    String yearlysales = yearlysalesController.text;
+   
+    Map<String,String> data = {
+      "businessname" : businessname,
+      "businesscategory" : businesscategory,
+      "address" : address,
+      "yearlysales" : yearlysales,
+     
+    };
+
+  ref.push().set(data);
+
+
+  }
+  
 }
+
+
