@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './Screen/splash.dart';
+
+import './ui/user_info_screen.dart';
 
 
 
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      
-         home: SplashScreen(),
+      darkTheme: ThemeData.dark(),
+         home: UserInfoScreen(),
 
      
     );
